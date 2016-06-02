@@ -7,7 +7,7 @@
  * セミナー資料：http://goo.gl/NaI1rc
 * 詳しい進め方等は資料をご覧ください。
 
-## P51 index.html
+## P52 index.html
 
 ```js
 document.addEventListener("deviceready", function(){
