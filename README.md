@@ -196,7 +196,7 @@
 
 * プロジェクト名を入力します
 * 説明は空欄でOKです
-* インポート方法は「URLを指定してインポート」を選択し、この画面([GitHub](https://github.com/natsumo/MonacaPushApp.git))の![画像10](/readme-img/010.png)ボタンをクリックして、URLをコピーしたものを貼り付けてください
+* インポート方法は「URLを指定してインポート」を選択し、この画面([GitHub](https://github.com/natsumo/MonacaPushApp.git))の![画像10](/readme-img/010.png)ボタンをクリックして、さらに![画像16](/readme-img/016.png)ボタンを__右クリック__してURLをコピーしたものを貼り付けてください
 
 ![画像9](/readme-img/009.png)
 
