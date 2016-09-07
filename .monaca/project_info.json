@@ -11,14 +11,14 @@
         "cordova-plugin-splashscreen@2.1.0",
         "ncmb-push-monaca-plugin@2.0.1"
     ],
-    "title-ja": "MonacaPushApp",
+    "title-ja": "",
     "title-en": "",
-    "description-ja": "Monaca×mBaaSでプッシュ通知を実装したサンプルアプリです",
+    "description-ja": "",
     "description-en": "",
     "category": "User Template",
     "platform": [
         "android",
         "ios"
     ],
-    "name": "generated-1465353646-57577eb67e2193e72579c74b"
+    "name": "generated-1473235714-57cfc81d7e2193065ae0e673"
 }
