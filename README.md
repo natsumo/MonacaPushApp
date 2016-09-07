@@ -36,7 +36,7 @@
 
 ## プッシュ通知の仕組み
 * ニフティクラウドmobile backendのプッシュ通知は、各プラットフォームが提供している通知サービスを利用しています
- * Androidの通知サービス __GCM（Google Cloud Messaging）__
+ * Androidの通知サービス __FCM（Firebase Cloud Messaging）__
 
  ![画像a1](/readme-img/a001.png)
 
@@ -44,7 +44,7 @@
 
  ![画像i1](/readme-img/i001.png)
 
-* 上図のように、アプリ（Monaca）・サーバー（ニフティクラウドmobile backend）・通知サービス（GCMあるいはAPNs）の間で認証が必要になります
+* 上図のように、アプリ（Monaca）・サーバー（ニフティクラウドmobile backend）・通知サービス（FCMあるいはAPNs）の間で認証が必要になります
  * 認証に必要な鍵や証明書の作成は作業手順の「0.プッシュ通知機能使うための準備」で行います
 
 ## 作業の手順
@@ -52,24 +52,9 @@
 * 動作確認を行う端末に応じて該当する内容を準備してください
 
 #### Android端末で動作確認をする場合
-* Google Cloud Platform にログインします　https://console.cloud.google.com/
-* GCMを利用するためプロジェクトを作成し、APIキー（認証用の鍵）を発行します
-
-![画像a2](/readme-img/a002.png)
-
-![画像a3](/readme-img/a003.png)
-
-![画像a4](/readme-img/a004.png)
-
-* プロジェクトコードの確認をします
- 
-![画像a5](/readme-img/a005.png)
-
-* GCMの有効化の設定をします
-
-![画像a6](/readme-img/a006.png)
-
-* Android端末で動作確認をする場合の準備は以上です
+* ニフティクラウド mobile backendと連携させるためのAPIキー(サーバーキー)と端末情報の登録処理時に必要なSender ID(送信者ID)を取得する必要があります
+* 下記リンク先のドキュメントを参考に、FCMプロジェクトの作成とAPIキー・Sender IDの取得を行ってください
+ * __[mobile backendとFCMの連携に必要な設定](https://github.com/NIFTYCloud-mbaas/ncmb_doc/blob/hotfix/fcm_changes/doc/current/tutorial/push_setup_android.html)__
 
 #### iOS端末で動作確認をする場合
 * Android端末と違い、作業が少し複雑です
@@ -99,7 +84,7 @@
 * ②開発用証明書(.cer)を作成します　※初回利用時のみ
  * __注意__：開発用証明書(.cer)ファイルは既に作成したものがあれば、新しく作成しないでください！必ず既存のものを使用します。複数作成してしまうとファイル名が同じであるため区別できなくなり失敗につながる恐れがあります。
 * 「Certificates」＞「All」＞右上の「＋」をクリックして、「iOS App Development」にチェックをいれます
- 
+
 ![画像i6](/readme-img/i006.png)
 ![画像i7](/readme-img/i007.png)
 ![画像i8](/readme-img/i008.png)
@@ -164,7 +149,7 @@
 * キーチェーンアクセスを開きます
 * ⑥で作成した「APNs用証明書(.cer)」をダブルクリックしてキーチェーンアクセスを開きます
 * 三角のアイコンをクリックして、開きます
- * 重要：証明書と秘密鍵を別々にする必要があります！ 
+ * 重要：証明書と秘密鍵を別々にする必要があります！
 
 ![画像i27](/readme-img/i027.png)
 ![画像i28](/readme-img/i028.png)
@@ -207,13 +192,12 @@
 ### 3. APIキーの設定
 
 * `index.html`を編集します
-* 先程[ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)のダッシュボード上で確認したAPIキーを貼り付けます
-* Android端末で動作確認をする場合はプロジェクト番号も貼り付けます
+* `YOUR_NCMB_APPLICATION_KEY`と`YOUR_NCMB_CLIENT_KEY`の部分を、先程[ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)のダッシュボード上で確認したAPIキーに書き換えます
+* また、Android端末で動作確認をする場合は、`YOUR_FCM_SENDER_ID`をFCMでプロジェクト作成時に発行されたSender ID(送信者ID)に書き換えます
 
 ![画像07](/readme-img/007.png)
 
-* それぞれ`YOUR_NCMB_APPLICATION_KEY`と`YOUR_NCMB_CLIENT_KEY`の部分を書き換えます（Android端末で動作確認をする場合は`PROJECT_NUMBER(Android_only)`も）
- * このとき、ダブルクォーテーション（`"`）を消さないように注意してください！
+* このとき、ダブルクォーテーション（`"`）を消さないように注意してください！
 * 書き換え終わったら「保存」をクリックして保存をします
 
 ![画像11](/readme-img/011.png)
@@ -221,13 +205,13 @@
 ### 4. 実機ビルド
 * 動作確認を行う端末に応じて該当する作業を行ってくださ
 
-#### Android端末で動作確認をする場合 
+#### Android端末で動作確認をする場合
 * 「ビルド」＞「Androidアプリのビルド」をクリックして、Androidアプリケーションのビルドを開きます
 * ｢デバッグビルド｣を選択して｢次へ｣をクリックします
 * 少し待つとビルドが完了します
 * 任意の方法で端末にインストールをしてください
 
-#### iOS端末で動作確認をする場合 
+#### iOS端末で動作確認をする場合
 * 「設定」＞「iOSビルド設定...」をクリックして、iOSビルド設定を開きます
 * ⑦開発用証明書(秘密鍵.p12)と②開発用み証明書(.cer)を設定します
 
@@ -292,13 +276,13 @@ document.addEventListener("deviceready", function(){
             window.NCMB.monaca.setDeviceToken(
                 "YOUR_NCMB_APPLICATIONKEY",
                 "YOUR_NCMB_CLIENTKEY",
-                "PROJECT_NUMBER(Android_only)"
+                "YOUR_FCM_SENDER_ID"
             );
         },false);
 ```
 
-* 「YOUR_NCMB_APPLICATIONKEY」、「YOUR_NCMB_CLIENTKEY」はmobile backendのダッシュボードのアプリケーションキー、クライアントキーにそれぞれ書き換えてください
-* 【Androidのみ】「PROJECT_NUMBER(Android_only)」はGCMのプロジェクト番号に書き換えてください
+* 「`YOUR_NCMB_APPLICATIONKEY`」、「`YOUR_NCMB_CLIENTKEY`」はmobile backendのダッシュボードのアプリケーションキー、クライアントキーにそれぞれ書き換えてください
+* Android端末で動作確認を行う場合は、「`YOUR_FCM_SENDER_ID`」をFCMでプロジェクト作成時に発行されたSenderID(送信者ID)に書き換えてください
 
 
 ## 参考
