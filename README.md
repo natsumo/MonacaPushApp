@@ -13,6 +13,19 @@
 
 ![画像2](/readme-img/002.png)
 
+## 動作環境
+※下記内容で動作確認をしています
+
+iOS
+* Mac OS X 10.11.6(El Capitan)
+* iPhone5 iOS 9.3.5
+* iPhone6s iOS 10.0.1
+
+Android
+* Nexus 5X Androidバージョン 7.0
+
+※上記内容で動作確認をしています
+
 ## 動作環境の準備
 ### 共通
 * Monaca会員登録
