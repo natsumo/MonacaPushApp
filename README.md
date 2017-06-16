@@ -114,7 +114,7 @@ __[【iOS】プッシュ通知の受信に必要な証明書の作り方(開発�
 * `YOUR_NCMB_APPLICATION_KEY`と`YOUR_NCMB_CLIENT_KEY`の部分を、先程[ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)のダッシュボード上で確認したAPIキーに書き換えます
 * また、Android端末で動作確認をする場合は、`YOUR_FCM_SENDER_ID`をFCMでプロジェクト作成時に発行されたSender ID(送信者ID)に書き換えます
 
-![画像07](/readme-img/007.png)
+![画像07](/readme-img/i034.png)
 
 * このとき、ダブルクォーテーション（`"`）を消さないように注意してください！
 * 書き換え終わったら「保存」をクリックして保存をします
