@@ -100,6 +100,7 @@ __[【iOS】プッシュ通知の受信に必要な証明書の作り方(開発�
 * プロジェクト名を入力します
 * 説明は空欄でOKです
 * インポート方法は「URLを指定してインポート」を選択します
+* 下記リンクの「Clone or download」にて「Download ZIP」を 右クリック し、URLをコピーしたものを貼り付けてインポートしてください
   https://github.com/NIFTYCloud-mbaas/MonacaPushApp
 
 ![画像9](/readme-img/009.png)
