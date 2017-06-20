@@ -102,7 +102,7 @@ __[【iOS】プッシュ通知の受信に必要な証明書の作り方(開発�
 * インポート方法は「URLを指定してインポート」を選択し、下記リンクを 右クリック してURLをコピーしたものを貼り付けてください
   * https://github.com/NIFTYCloud-mbaas/MonacaPushApp/archive/master.zip
 
-![画像9](/readme-img/i036.png)
+![画像9](/readme-img/i038.png)
 
 * 作成されたプロジェクトを「開く」をクリックして開きます
 
@@ -185,7 +185,7 @@ __[【iOS】プッシュ通知の受信に必要な証明書の作り方(開発�
 * Monacaで「設定」＞「Cordvaプラグインの管理...」を開きます
 * プッシュ通知をアプリに実装する場合は以下のプラグインを有効にします
 
-![画像15](/readme-img/i035.png)
+![画像15](/readme-img/i037.png)
 
 #### ロジック
  * `index.html`の`<script></script>`タグ内にデバイストークンを取得し、[ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)に保存するロジックを書いています
