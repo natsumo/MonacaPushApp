@@ -1,6 +1,6 @@
 # 【Monaca】アプリにプッシュ通知を組み込もう！
 
-<center><img src="readme-img/001.png" alt="画像1" width="500px"></center>
+<center><img src="readme-img/001.png" alt="画像1" width="900px"></center>
 
 ## 概要
 * [ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)の『プッシュ通知』機能を実装したサンプルプロジェクトです
@@ -43,13 +43,13 @@
 
 ### Androidの通知サービス __FCM（Firebase Cloud Messaging）__
 
-<center><img src="readme-img/a001.png" alt="画像a1" width="500px"></center>
+<center><img src="readme-img/a001.png" alt="画像a1" width="900px"></center>
 
 * FCM は GCM (Google Cloud Messaging)の新バージョンです。既に GCM にてプロジェクトの作成・ GCM の有効化設定を終えている場合は、継続してご利用いただくことが可能です。新規で GCM をご利用いただくことはできませんので、あらかじめご了承ください。
 
 ### iOSの通知サービス　__APNs（Apple Push Notification Service）__
 
-<center><img src="readme-img/i001.png" alt="画像i1" width="500px"></center>
+<center><img src="readme-img/i001.png" alt="画像i1" width="900px"></center>
 
 * 上図のように、アプリ（Monaca）・サーバー（ニフティクラウドmobile backend）・通知サービス（FCMあるいはAPNs）の間で認証が必要になります
  * 認証に必要な鍵や証明書の作成は作業手順の「0.プッシュ通知機能を使うための準備」で行います
@@ -70,7 +70,7 @@ __[iOS 端末で動作確認されるかたはこちら](https://github.com/NIFT
 * 上記のドキュメントをご覧の上、必要な証明書類の作成をお願いします
 * 証明書の作成には[Apple Developer Program](https://developer.apple.com/account/)の登録（有料）が必要です
 
-<center><img src="readme-img/i002.png" alt="画像i2" width="500px"></center>
+<center><img src="readme-img/i002.png" alt="画像i2" width="900px"></center>
 
 ### 1. ニフティクラウド mobile backend の準備
 * ニフティクラウド mobile backend にログインします<br>http://mb.cloud.nifty.com/
@@ -90,11 +90,11 @@ __[iOS 端末で動作確認されるかたはこちら](https://github.com/NIFT
 * アプリ作成されると下図のような画面になります
 * この２種類のAPIキー（アプリケーションキーとクライアントキー）は、この後 Monaca で作成するアプリとの連携のために使用します
 
-<center><img src="readme-img/004.png" alt="画像4" width="600px"></center>
+<center><img src="readme-img/004.png" alt="画像4" width="900px"></center>
 
 * 続けて、「 __0. プッシュ通知機能を使うための準備__ 」で動作確認端末別に作成した認証キーまたは証明書を設定します
 
-<center><img src="readme-img/005.png" alt="画像5" width="600px"></center>
+<center><img src="readme-img/005.png" alt="画像5" width="900px"></center>
 
 * mobile backend 側の準備は以上です
 
@@ -126,7 +126,7 @@ __[iOS 端末で動作確認されるかたはこちら](https://github.com/NIFT
 * __Android端末で動作確認をする場合__ は、`YOUR_FCM_SENDER_ID`を FCM で発行した Sender ID (送信者ID)に書き換えます
   * iOS端末で動作確認をする場合は、そのままでOKです
 
-<center><img src="readme-img/i034.png" alt="画像7" width="500px"></center>
+<center><img src="readme-img/i034.png" alt="画像7" width="800px"></center>
 
 * このとき、ダブルクォーテーション（`"`）を消さないように注意してください！
 * 書き換え終わったら「保存」をクリックして保存をします
@@ -158,11 +158,11 @@ __[iOS 端末で動作確認されるかたはこちら](https://github.com/NIFT
 * 次に「設定」＞「iOSビルド設定...」をクリックます
 * 「秘密鍵と証明書のインポート」の「インポート」ボタンをクリックして、作成した『開発用証明書(秘密鍵.p12) 』を設定します
 
-<center><img src="readme-img/i032.png" alt="画像i30" width="400px"></center>
+<center><img src="readme-img/i032.png" alt="画像i30" width="800px"></center>
 
 * 「証明書とプロファイル」の「プロファイルのアップロード」ボタンをクリックして、作成した『プロビジョニングプロファイル』を設定します
 
-<center><img src="readme-img/i033.png" alt="画像i33" width="600px"></center>
+<center><img src="readme-img/i033.png" alt="画像i33" width="800px"></center>
 
 * 「ビルド」＞「iOSアプリのビルド」をクリックします
 * デフォルト設定（「デバッグ向けビルド」＞｢デバッグビルド｣が選択されている状態）で画面下の｢ビルドを開始する｣ボタンをクリックします
@@ -184,7 +184,7 @@ __[iOS 端末で動作確認されるかたはこちら](https://github.com/NIFT
 * 起動されたら時点で Android端末は レジスタレーションID が、iOS端末は デバイストークン が取得され、mobile backend に保存されます
 * mobile backend のダッシュボードで「データストア」＞「installation」クラスを確認してみましょう！
 
-<center><img src="readme-img/012.png" alt="画像12" width="600px"></center>
+<center><img src="readme-img/012.png" alt="画像12" width="800px"></center>
 
 * 端末側で起動したアプリは一度閉じておきます
 
@@ -211,7 +211,7 @@ __[iOS 端末で動作確認されるかたはこちら](https://github.com/NIFT
 * Monacaで「設定」＞「JS/CSSコンポーネントの追加と削除...」を開きます
 * 下図のようにSDKをインポートできます
 
-<center><img src="readme-img/014.png" alt="画像14" width="600px"></center>
+<center><img src="readme-img/014.png" alt="画像14" width="800px"></center>
 
 ##### Cordvaプラグインの設定
 * Monacaで「設定」＞「Cordvaプラグインの管理...」を開きます

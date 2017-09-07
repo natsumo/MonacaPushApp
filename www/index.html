@@ -3,27 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <script src="components/loader.js"></script>
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="css/style.css">
     <script>
     document.addEventListener("deviceready", function(){
-        // デバイストークンを取得してinstallationに登録する
-        window.NCMB.monaca.setDeviceToken(
-            "YOUR_NCMB_APPLICATION_KEY",
-            "YOUR_NCMB_CLIENT_KEY",
-            "YOUR_FCM_SENDER_ID"
-        );
+            // デバイストークンを取得してinstallationに登録する
+            window.NCMB.monaca.setDeviceToken(
+                "YOUR_NCMB_APPLICATION_KEY",
+                "YOUR_NCMB_CLIENT_KEY",
+                "YOUR_FCM_SENDER_ID"
+            );
         },false);
     </script>
 </head>
 <body>
 	<br /><br /><br />
     <font size="6"><center><b>Monaca Push App</b></center></font>
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     <footer>
-        <p><font size="2"><center>Copyright © 2017 FUJITSU CLOUD TECHNOLOGIES LIMITED.<br />All rights reserved.</center></font></p>
+        <p><font size="1"><center>Copyright © 2017 FUJITSU CLOUD TECHNOLOGIES LIMITED.<br />All rights reserved.</center></font></p>
     </footer>
 </body>
 </html>

@@ -1,24 +1,25 @@
 {
     "plugins": [
-        "mobi.monaca.plugins.Monaca"
+        "mobi.monaca.plugins.Monaca@3.1.0"
     ],
     "framework_version": "3.5",
-    "xcode_version": "6",
-    "cordova_version": "5.2",
+    "xcode_version": "8",
+    "cordova_version": "6.5",
     "plugin_settings": [],
     "external_plugins": [
-        "cordova-plugin-whitelist@1.0.0",
-        "cordova-plugin-splashscreen@2.1.0",
-        "ncmb-push-monaca-plugin@2.0.1"
+        "cordova-plugin-whitelist@1.3.1",
+        "cordova-plugin-splashscreen@4.0.3",
+        "ncmb-push-monaca-plugin@2.0.7",
+        "cordova-custom-config@2.0.3"
     ],
-    "title-ja": "",
+    "title-ja": "MonacaPushApp",
     "title-en": "",
-    "description-ja": "",
+    "description-ja": "Cordova 6.5.0",
     "description-en": "",
     "category": "User Template",
     "platform": [
         "android",
         "ios"
     ],
-    "name": "generated-1473235714-57cfc81d7e2193065ae0e673"
+    "name": "generated-1504776987-599e2845803451cf413cd718"
 }
