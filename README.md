@@ -1,6 +1,6 @@
 # 【Monaca】アプリにプッシュ通知を組み込もう！
 
-![画像1](/readme-img/001.png)
+<center><img src="readme-img/001.png" alt="画像1" width="500px"></center>
 
 ## 概要
 * [ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)の『プッシュ通知』機能を実装したサンプルプロジェクトです
@@ -11,163 +11,195 @@
 
 注1：詳しくは[こちら](http://mb.cloud.nifty.com/price.htm)をご覧ください
 
-![画像2](/readme-img/002.png)
-
-## 動作環境
-※下記内容で動作確認をしています
-
-iOS
-* Mac OS X 10.11.6(El Capitan)
-* iPhone5 iOS 9.3.5
-* iPhone6s iOS 10.0.1
-
-Android
-* Nexus 5X Androidバージョン 7.0
-
-※上記内容で動作確認をしています
+<center><img src="readme-img/002.png" alt="画像2" width="500px"></center>
 
 ## 動作環境の準備
 ### 共通
-* Monaca会員登録
- * 右記リンクより登録（無料）をお願いします　https://ja.monaca.io/
-* ブラウザ環境：ChromeまたはMozilla Firefox
+* Monaca 会員登録
+  * 下記リンクより登録（無料）をお願いします<br>https://ja.monaca.io/
+* ニフティクラウド mobile backend 会員登録
+  * 下記リンクより登録（無料）をお願いします<br>http://mb.cloud.nifty.com/
+* 推奨ブラウザ環境の準備
+ * Chrome最新版
 
 ### Android端末で動作確認をする場合
 * PC
+  * Windows または Mac
 * Googleアカウント
 * Android端末
+  * 最新バージョン推奨
 
 ### iOS端末で動作確認をする場合
 * Mac
- * キーチェーンアクセスを利用します
-* Apple Developer Program(有償)アカウント
- * 別のMacで使用しているアカウントの場合、発行する証明書に秘密鍵を紐付けることができません。ただし、アカウントを使用しているMacから秘密鍵を書き出して、今回使用するMacに送ることで作業は可能です
-* iOS端末
- * Lightningケーブル（端末のUDIDを調べるために必要です）
-
-※このサンプルアプリは、実機ビルドが必要です
+  * キーチェーンアクセスを利用します
+* Apple Developer Program (有償)アカウント
+  * 別の Mac で使用しているアカウントの場合、発行する証明書に秘密鍵を紐付けることができません。ただし、アカウントを使用している Mac から秘密鍵を書き出して、今回使用するMacに送ることで作業は可能です
+* iOS 端末
+  * 最新バージョン推奨
+  * Lightning ケーブル（端末の UDID を調べるために必要です）
 
 ## プッシュ通知の仕組み
-* ニフティクラウドmobile backendのプッシュ通知は、各プラットフォームが提供している通知サービスを利用しています
- * Androidの通知サービス __FCM（Firebase Cloud Messaging）__
+ニフティクラウド mobile backend のプッシュ通知は、各プラットフォームが提供している通知サービスを利用しています。
 
- ![画像a1](/readme-img/a001.png)
- ※ FCMはGCM(Google Cloud Messaging)の新バージョンです。既にGCMにてプロジェクトの作成・GCMの有効化設定を終えている場合は、継続してご利用いただくことが可能です。新規でGCMをご利用いただくことはできませんので、あらかじめご了承ください。
+### Androidの通知サービス __FCM（Firebase Cloud Messaging）__
 
- * iOSの通知サービス　__APNs（Apple Push Notification Service）__
+<center><img src="readme-img/a001.png" alt="画像a1" width="500px"></center>
 
- ![画像i1](/readme-img/i001.png)
+* FCM は GCM (Google Cloud Messaging)の新バージョンです。既に GCM にてプロジェクトの作成・ GCM の有効化設定を終えている場合は、継続してご利用いただくことが可能です。新規で GCM をご利用いただくことはできませんので、あらかじめご了承ください。
+
+### iOSの通知サービス　__APNs（Apple Push Notification Service）__
+
+<center><img src="readme-img/i001.png" alt="画像i1" width="500px"></center>
 
 * 上図のように、アプリ（Monaca）・サーバー（ニフティクラウドmobile backend）・通知サービス（FCMあるいはAPNs）の間で認証が必要になります
  * 認証に必要な鍵や証明書の作成は作業手順の「0.プッシュ通知機能を使うための準備」で行います
 
 ## 作業の手順
-### 0.プッシュ通知機能を使うための準備
+### 0. プッシュ通知機能を使うための準備
 * 動作確認を行う端末に応じて該当する内容を準備してください
 
 #### Android端末で動作確認をする場合
-* ニフティクラウド mobile backendと連携させるためのAPIキー(サーバーキー)と端末情報の登録処理時に必要なSender ID(送信者ID)を取得する必要があります
-* 下記リンク先のドキュメントを参考に、FCMプロジェクトの作成とAPIキー・Sender IDの取得を行ってください
+ __[Android 端末で動作確認されるかたはこちら](http://mb.cloud.nifty.com/doc/current/tutorial/push_setup_android.html)__
 
- __[mobile backendとFCMの連携に必要な設定](http://mb.cloud.nifty.com/doc/current/tutorial/push_setup_android.html)__
+* ニフティクラウド mobile backend と連携させるための APIキー(サーバーキー)と端末情報の登録処理時に必要な Sender ID (送信者ID)を取得する必要があります
+* 下記リンク先のドキュメントを参考に、FCM プロジェクトの作成と APIキー・Sender IDの取得を行ってください
 
 #### iOS端末で動作確認をする場合
-__[【iOS】プッシュ通知の受信に必要な証明書の作り方(開発用)](https://github.com/NIFTYCloud-mbaas/iOS_Certificate)__
+__[iOS 端末で動作確認されるかたはこちら](https://github.com/NIFTYCloud-mbaas/iOS_Certificate)__
+
 * 上記のドキュメントをご覧の上、必要な証明書類の作成をお願いします
 * 証明書の作成には[Apple Developer Program](https://developer.apple.com/account/)の登録（有料）が必要です
 
-![画像i002](/readme-img/i002.png)
+<center><img src="readme-img/i002.png" alt="画像i2" width="500px"></center>
 
-### 1. [ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)の会員登録とログイン→アプリ作成と設定
-* 上記リンクから会員登録（無料）をします。登録ができたらログインをすると下図のように「アプリの新規作成」画面が出るのでアプリを作成します
+### 1. ニフティクラウド mobile backend の準備
+* ニフティクラウド mobile backend にログインします<br>http://mb.cloud.nifty.com/
 
-![画像3](/readme-img/003.png)
+<center><img src="readme-img/003-1.png" alt="画像3-1" width="500px"></center>
+
+* 新しいアプリを作成します
+* アプリ名を入力し、「新規作成」をクリックします
+  * 例）__PushDemo__
+
+<center><img src="readme-img/003-2.png" alt="画像3-2" width="300px"></center>
+
+* mobile backend を既に使用したことがある場合は、画面上方のメニューバーにある「+新しいアプリ」をクリックすると同じ画面が表示されます
+
+<center><img src="readme-img/003-3.png" alt="画像3-3" width="100px"></center>
 
 * アプリ作成されると下図のような画面になります
-* この２種類のAPIキー（アプリケーションキーとクライアントキー）はMonacaで作成するiOSアプリに[ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)を紐付けるために使用します
+* この２種類のAPIキー（アプリケーションキーとクライアントキー）は、この後 Monaca で作成するアプリとの連携のために使用します
 
-![画像4](/readme-img/004.png)
+<center><img src="readme-img/004.png" alt="画像4" width="600px"></center>
 
-* 続けてプッシュ通知の設定を行います
+* 続けて、「 __0. プッシュ通知機能を使うための準備__ 」で動作確認端末別に作成した認証キーまたは証明書を設定します
 
-![画像5](/readme-img/005.png)
+<center><img src="readme-img/005.png" alt="画像5" width="600px"></center>
 
-### 2. [Monaca](https://ja.monaca.io/)の会員登録とログイン→プロジェクトの作成
-* 上記リンクから会員登録（無料）をします。登録ができたらログインします
+* mobile backend 側の準備は以上です
 
-![画像8](/readme-img/008.png)
+### 2. Monaca でアプリの準備
+* Monacaにログインをします<br>https://ja.monaca.io/
+
+<center><img src="readme-img/008-1.png" alt="画像8-1" width="450px"></center>
+
+* プロジェクトを作成します
+
+<center><img src="readme-img/008-2.png" alt="画像8-2" width="550px"></center>
 
 * プロジェクト名を入力します
 * 説明は空欄でOKです
 * インポート方法は「URLを指定してインポート」を選択し、下記リンクを 右クリック してURLをコピーしたものを貼り付けてください
-  * https://github.com/NIFTYCloud-mbaas/MonacaPushApp/archive/master.zip
+  * `https://github.com/NIFTYCloud-mbaas/MonacaPushApp/archive/master.zip`
 
-![画像9](/readme-img/i038.png)
+<center><img src="readme-img/i038.png" alt="画像9" width="300px"></center>
 
 * 作成されたプロジェクトを「開く」をクリックして開きます
 
-![画像6](/readme-img/006.png)
+<center><img src="readme-img/006.png" alt="画像6" width="500px"></center>
 
 ### 3. APIキーの設定
+* 作成した Monaca プロジェクトに mobile bakcend で発行した APIキー を設定して連携します
+* `www/index.html`を編集します
+  * Monacaでプロジェクトを開くとデフォルトで表示されるファイルです
+* 中ほどにある、`YOUR_NCMB_APPLICATION_KEY`と`YOUR_NCMB_CLIENT_KEY`の部分を、先程 mobile backend のダッシュボード上で確認した APIキーに書き換えます
+* __Android端末で動作確認をする場合__ は、`YOUR_FCM_SENDER_ID`を FCM で発行した Sender ID (送信者ID)に書き換えます
+  * iOS端末で動作確認をする場合は、そのままでOKです
 
-* `index.html`を編集します
-* `YOUR_NCMB_APPLICATION_KEY`と`YOUR_NCMB_CLIENT_KEY`の部分を、先程[ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)のダッシュボード上で確認したAPIキーに書き換えます
-* また、Android端末で動作確認をする場合は、`YOUR_FCM_SENDER_ID`をFCMでプロジェクト作成時に発行されたSender ID(送信者ID)に書き換えます
-
-![画像07](/readme-img/i034.png)
+<center><img src="readme-img/i034.png" alt="画像7" width="500px"></center>
 
 * このとき、ダブルクォーテーション（`"`）を消さないように注意してください！
 * 書き換え終わったら「保存」をクリックして保存をします
+  * メニューバーの「保存」をクリックします
+  * Windowsの場合は、「Ctrl + S」でも保存可能
+  * Macの場合は、「Command + S」でも保存可能
 
-![画像11](/readme-img/011.png)
+<center><img src="readme-img/011.png" alt="画像11" width="500px"></center>
+
+* これで Monaca プロジェクトと mobile backend が連携されました！準備は完了です◎
 
 ### 4. 実機ビルド
-* 動作確認を行う端末に応じて該当する作業を行ってください
+* 動作確認を行う端末に応じて、該当する作業を行ってください
 
 #### Android端末で動作確認をする場合
-* 「ビルド」＞「Androidアプリのビルド」をクリックして、Androidアプリケーションのビルドを開きます
-* ｢デバッグビルド｣を選択して｢ビルドを開始する｣をクリックします
-* 少し待つとビルドが完了します
-* 任意の方法で端末にインストールをしてください
+* 「ビルド」＞「Androidアプリのビルド」をクリックします
+* デフォルト設定（「デバッグ向けビルド」＞｢デバッグビルド｣が選択されている状態）で画面下の｢ビルドを開始する｣ボタンをクリックします
+* 別のタブでビルドが開始され、少し待つとビルドが完了します
+* ビルド完了後の画面に表示されるいずれかの方法で、端末にアプリをインストールをしてください
 
 #### iOS端末で動作確認をする場合
-* 「設定」＞「iOSビルド設定...」をクリックして、iOSビルド設定を開きます
-* ⑦開発用証明書(秘密鍵.p12)を設定します
+* まず「設定」＞「iOSアプリ設定...」をクリックします
+* App ID を変更します
+  * App ID 作成時に設定した『 Bundle ID 』に書き換えます
 
-![画像i30](/readme-img/i032.png)
+<center><img src="readme-img/016.png" alt="画像16" width="400px"></center>
 
-* ⑤で作成したプロビジョニングプロファイルを設定します
+* 画面下の「保存する」ボタンをクリックします
+* 次に「設定」＞「iOSビルド設定...」をクリックます
+* 「秘密鍵と証明書のインポート」の「インポート」ボタンをクリックして、作成した『開発用証明書(秘密鍵.p12) 』を設定します
 
-![画像i31](/readme-img/i033.png)
+<center><img src="readme-img/i032.png" alt="画像i30" width="400px"></center>
 
-* 「ビルド」＞「iOSアプリのビルド」をクリックして、iOSアプリケーションのビルドを開きます
-* ｢デバッグビルド｣を選択して｢ビルドを開始する｣をクリックします
-* 少し待つとビルドが完了します
-* 任意の方法で端末にインストールをしてください
- * インストール方法は、下記の参考欄に「iOSアプリのインストール方法」として記載していますのでご参照ください
+* 「証明書とプロファイル」の「プロファイルのアップロード」ボタンをクリックして、作成した『プロビジョニングプロファイル』を設定します
 
-### 5.動作確認
-* インストールしたアプリを起動します
- * プッシュ通知の許可を求めるアラートが出たら、必ず許可してください！
-* 起動されたらこの時点でAndroid端末はレジスタレーションID、iOS端末はデバイストークンが取得されます
-* [ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)のダッシュボードで「データストア」＞「installation」クラスを確認してみましょう！
+<center><img src="readme-img/i033.png" alt="画像i33" width="600px"></center>
 
-![画像12](/readme-img/012.png)
+* 「ビルド」＞「iOSアプリのビルド」をクリックします
+* デフォルト設定（「デバッグ向けビルド」＞｢デバッグビルド｣が選択されている状態）で画面下の｢ビルドを開始する｣ボタンをクリックします
+* 別のタブでビルドが開始され、少し待つとビルドが完了します
+* 下記のいずれかの方法で、端末にアプリをインストールをしてください
+
+##### iOSアプリのインストール方法
+1. iTunesを使う方法
+  * ダウンロードしたプロジェクト.ipaをドラッグ＆ドロップ
+1. Xcodeを使う方法
+  * http://docs.monaca.mobi/cur/ja/manual/deploy/non_market_deploy/
+1. DeployGateを使う方法
+  * アカウント（無料）を取得し、ダウンロードしたプロジェクト.ipaをドラッグ＆ドロップ
+  * https://deploygate.com/
+
+### 5. 動作確認
+* 端末でインストールしたアプリを起動します
+ * プッシュ通知の許可を求めるアラートが出たら、必ず許可してください（iOS端末のみ）
+* 起動されたら時点で Android端末は レジスタレーションID が、iOS端末は デバイストークン が取得され、mobile backend に保存されます
+* mobile backend のダッシュボードで「データストア」＞「installation」クラスを確認してみましょう！
+
+<center><img src="readme-img/012.png" alt="画像12" width="600px"></center>
 
 * 端末側で起動したアプリは一度閉じておきます
 
-### 6.__プッシュ通知を送りましょう！__
-* いよいよです！実際にプッシュ通知を送ってみましょう！
-* [ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)のダッシュボードで「プッシュ通知」＞「＋新しいプッシュ通知」をクリックします
+### 6. プッシュ通知を送りましょう！
+* 実際にプッシュ通知を送ってみましょう！
+* mobile backend のダッシュボードで「プッシュ通知」＞「＋新しいプッシュ通知」をクリックします
 * プッシュ通知のフォームが開かれます
 * 必要な項目を入力してプッシュ通知を作成します
 
-![画像13](/readme-img/013.png)
+<center><img src="readme-img/013.png" alt="画像13" width="550px"></center>
 
 * 端末を確認しましょう！
 * 少し待つとプッシュ通知が届きます！！！
 
-![画像17](/readme-img/017.png)
+<center><img src="readme-img/017.png" alt="画像17" width="400px"></center>
 
 ## 解説
 サンプルプロジェクトに実装済みの内容のご紹介
@@ -179,29 +211,29 @@ __[【iOS】プッシュ通知の受信に必要な証明書の作り方(開発�
 * Monacaで「設定」＞「JS/CSSコンポーネントの追加と削除...」を開きます
 * 下図のようにSDKをインポートできます
 
-![画像14](/readme-img/014.png)
+<center><img src="readme-img/014.png" alt="画像14" width="600px"></center>
 
 ##### Cordvaプラグインの設定
 * Monacaで「設定」＞「Cordvaプラグインの管理...」を開きます
 * プッシュ通知をアプリに実装する場合は以下のプラグインを有効にします
 
-![画像15](/readme-img/i037.png)
+<center><img src="readme-img/i037.png" alt="画像15" width="200px"></center>
 
 #### ロジック
- * `index.html`の`<script></script>`タグ内にデバイストークンを取得し、[ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)に保存するロジックを書いています
+* `index.html`の`<script></script>`タグ内にデバイストークンを取得し、[ニフティクラウドmobile backend](http://mb.cloud.nifty.com/)に保存するロジックを書いています
 
 ```js
 document.addEventListener("deviceready", function(){
-            // デバイストークンを取得してinstallationに登録する
-            window.NCMB.monaca.setDeviceToken(
-                "YOUR_NCMB_APPLICATIONKEY",
-                "YOUR_NCMB_CLIENTKEY",
-                "YOUR_FCM_SENDER_ID"
-            );
-        },false);
+    // デバイストークンを取得してinstallationに登録する
+    window.NCMB.monaca.setDeviceToken(
+        "YOUR_NCMB_APPLICATION_KEY",
+        "YOUR_NCMB_CLIENT_KEY",
+        "YOUR_FCM_SENDER_ID"
+    );
+},false);
 ```
 
-* 「`YOUR_NCMB_APPLICATIONKEY`」、「`YOUR_NCMB_CLIENTKEY`」はmobile backendのダッシュボードのアプリケーションキー、クライアントキーにそれぞれ書き換えてください
+* 「`YOUR_NCMB_APPLICATION_KEY`」、「`YOUR_NCMB_CLIENT_KEY`」はmobile backendのダッシュボードのアプリケーションキー、クライアントキーにそれぞれ書き換えてください
 * Android端末で動作確認を行う場合は、「`YOUR_FCM_SENDER_ID`」をFCMでプロジェクト作成時に発行されたSenderID(送信者ID)に書き換えてください
 
 
@@ -209,14 +241,3 @@ document.addEventListener("deviceready", function(){
 * ニフティクラウドmobile backend のドキュメントもご活用ください
  * [クイックスタート](http://mb.cloud.nifty.com/doc/current/introduction/quickstart_monaca.html)
  * [プッシュ通知](http://mb.cloud.nifty.com/doc/current/push/basic_usage_ios.html)
-
-### iOSアプリのインストール方法
-1. iTunesを使う方法
-ダウンロードしたプロジェクト.ipaをドラッグ＆ドロップ
-
-1. Xcodeを使う方法
-http://docs.monaca.mobi/cur/ja/manual/deploy/non_market_deploy/
-
-1. DeployGateを使う方法
-アカウント（無料）を取得し、ダウンロードしたプロジェクト.ipaをドラッグ＆ドロップ
-https://deploygate.com/
