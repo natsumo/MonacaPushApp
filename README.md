@@ -6,7 +6,7 @@
 * [ニフクラ mobile backend](http://mb.cloud.nifty.com/)の『プッシュ通知』機能を実装したサンプルプロジェクトです
 * 簡単な操作ですぐに [ニフクラ mobile backend](http://mb.cloud.nifty.com/)の機能を体験いただけます★☆
 
-## ニフティクラウドmobile backendとは
+## ニフクラ mobile backendとは
 スマートフォンアプリのバックエンド機能（プッシュ通知・データストア・会員管理・ファイルストア・SNS連携・位置情報検索・スクリプト）が**開発不要**、しかも基本**無料**(注1)で使えるクラウドサービス！
 
 <center><img src="readme-img/002.png" alt="画像2" width="300px"></center>
